@@ -1,0 +1,62 @@
+﻿@model IEnumerable<MVC_Project_8th_Module.Models.ApplicationUser>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<br />
+<br />
+
+<h2 class="text-center">User List</h2>
+
+<table class="table table-hover table-dark">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.UserName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LastName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Password_hint)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Password_hint)
+            </td>
+
+            <td>
+
+                <a href="@Url.Action("Create", "Users")" class="btn btn-secondary btn-sm mr-1"><i class="fa fa-plus"></i></a>
+                <a href="@Url.Action("Edit", "Users", new { id = item.Id })" class="btn btn-secondary btn-sm mr-1"><i class="fa fa-edit"></i></a>
+                <a href="@Url.Action("Details", "Users", new { id = item.Id })" class="btn btn-secondary btn-sm mr-1"><i class=" fa fa-bars"></i></a>
+                <a href="@Url.Action("Delete", "Users", new { id = item.Id })" class="btn btn-secondary btn-sm mr-1"><i class=" fa fa-trash"></i></a>
+
+            </td>
+        </tr>
+    }
+
+</table>

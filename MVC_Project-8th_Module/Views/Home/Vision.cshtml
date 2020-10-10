@@ -1,0 +1,39 @@
+﻿
+@{
+    ViewBag.Title = "Vision";
+}
+
+<br />
+<br />
+
+<div class="jumbotron">
+    <p class="bg-primary">
+        <h2>@ViewBag.Message</h2>
+    </p>
+
+
+    <p class="text-justify">
+
+        The ultimate goal of the Open Library is to make all the published works of humankind available to everyone in the world. While large in scope and ambition, this goal is within our grasp. Achieving it will require the participation of librarians, authors, government officials and technologists.
+
+        Imagine what a comprehensive, open library could be! A talented math whiz who lives in a rural community can explore the works of high math. An elderly person can have a large print edition of any book ever published. An innovative young scholar can publish a book directly to this great library on subjects that might not otherwise make it through the long and difficult publication process.
+
+        How can you help? Improve the records we have for the books you love – every record is fully editable by clicking the “edit” button on the page. If we don't have a record for a book, you can create one. If you're a library with digitized resources, tell us where they are and we'll point people to them.
+
+        Our hope is that libraries and individual book readers will join this project and together we can build towards universal access to all knowledge.
+
+    </p>
+</div>
+<div class="jumbotron">
+    <div class="row">
+        <div id="divH1" class="col-md-3 bg-dark text-white text-center nav-link">
+            <h2>@Html.ActionLink("Home", "Index", "Home")</h2>
+        </div>
+        <div id="divH2" class="col-md-3 bg-dark text-white text-center nav-link">
+            <h2>@Html.ActionLink("About", "About", "Home")</h2>
+        </div>
+        <div id="divH3" class="col-md-3 bg-dark text-white text-center nav-link">
+            <h2>@Html.ActionLink("Contact", "Contact", "Home")</h2>
+        </div>
+    </div>
+</div>

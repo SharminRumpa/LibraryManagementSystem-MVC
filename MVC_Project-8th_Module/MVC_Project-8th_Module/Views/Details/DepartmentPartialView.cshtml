@@ -1,0 +1,43 @@
+﻿@model MVC_Project_8th_Module.Models.SelectedDetailsModel
+
+<br />
+<h2 class="text-center">Faculty Wise Department List</h2>
+<table class="table table-hover table-dark">
+    <thead >
+        <tr>
+            <th>
+                Department Name
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+
+    @foreach (var item in Model.Departments)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.DepartmentName)
+            </td>
+
+            <td>
+
+                <a href="@Url.Action("Index", "Details", new { DepartmentID = item.DepartmentID })" class="btn btn-secondary btn-sm mr-1">Select</a>
+                <a href="@Url.Action("Edit", "Departments", new { id = item.DepartmentID })" class="btn btn-secondary btn-sm mr-1"><i class="fa fa-edit"></i></a> 
+                <a href="@Url.Action("Details", "Departments", new { id = item.DepartmentID })" class="btn btn-secondary btn-sm mr-1"><i class=" fa fa-bars"></i></a>
+                <a href="@Url.Action("Delete", "Departments", new { id = item.DepartmentID })" class="btn btn-secondary btn-sm mr-1"><i class=" fa fa-trash"></i></a>
+
+
+                @*@Html.ActionLink("Select", "Index", new { DepartmentID = item.DepartmentID }) |
+                    @Html.ActionLink("Edit", "Edit", "Departments", new { id = item.DepartmentID }, null) |
+                    @Html.ActionLink("Details", "Details", "Departments", new { id = item.DepartmentID }, null) |
+                    @Html.ActionLink("Delete", "Delete", "Departments", new { id = item.DepartmentID }, null)*@
+            </td>
+        </tr>
+    }
+
+
+
+
+</table>
+
+

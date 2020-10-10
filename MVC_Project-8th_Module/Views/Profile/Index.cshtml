@@ -1,0 +1,63 @@
+﻿
+@model MVC_Project_8th_Module.Models.ProfileDetails
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<br /><br />
+
+<h2 class="text-center">My Profile</h2>
+
+<table class="table table-hover table-dark">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(m => m.UserId)
+        </th>
+        <td>
+            @Html.DisplayFor(m => m.UserId, new { @disabled = true })
+        </td>
+    </tr>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(m => m.UserName)
+        </th>
+        <td>
+            @Html.DisplayFor(m => m.UserName, new { @disabled = true })
+        </td>
+    </tr>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(m => m.FirstName)
+        </th>
+        <td>
+            @Html.DisplayFor(m => m.FirstName)
+        </td>
+    </tr>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(m => m.LastName)
+        </th>
+        <td>
+            @Html.DisplayFor(m => m.LastName)
+        </td>
+    </tr>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(m => m.Email)
+        </th>
+        <td>
+            @Html.DisplayFor(m => m.Email)
+        </td>
+    </tr>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(m => m.Password_hint)
+        </th>
+        <td>
+            @Html.DisplayFor(m => m.Password_hint)
+        </td>
+    </tr>
+    
+</table>
+

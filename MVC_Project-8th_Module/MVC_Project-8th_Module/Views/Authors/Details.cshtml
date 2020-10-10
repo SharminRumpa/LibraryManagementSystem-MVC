@@ -1,0 +1,46 @@
+﻿@model MVC_Project_8th_Module.Models.Author
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<br />
+<br />
+
+<h2 class="text-center">Details Information </h2>
+
+
+<div>
+    <h4>Author</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.AuthorName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AuthorName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DescripTion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DescripTion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ImageUrl)
+        </dt>
+
+        <dd>
+            <img src="@Url.Content(Model.ImageUrl)" width="150" height="100" class="rounded" />
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.AuthorID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

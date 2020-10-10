@@ -1,0 +1,150 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <link href="~/StyleSheet.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <script src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+    <style>
+        body {
+            background-color: #cbc4c4;
+            font-family: 'Oxygen', sans-serif;
+        }
+
+        .btn {
+              /*background-color:slategray;*/
+
+              background-color:#6c757d;
+              border: none;
+              color: white;
+              font-size: 20px;
+              cursor: pointer;
+              height:40px;
+              text-align:center;
+              
+        }
+
+        /* Darker background on mouse-over */
+        .btn:hover {
+              background-color:darkgray;
+        }
+
+        .dropdown:hover > .dropdown-menu {
+            display: block;
+        }
+
+        .dropdown > .dropdown-toggle:active {
+            pointer-events: none;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="navbar navbar-expand-lg navbar-dark bg-secondary border-bottom fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="/Home/Index"><img src="~/images/Home/SRlogo.jpg" alt="Company logo" width="50" height="40" class="rounded-circle" /> SR Library</a>
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="navbar-collapse collapse" data-hover="dropdown" id="navbarSupportedContent">
+                <ul class="nav navbar-nav">
+
+                    <li class="nav-item">@Html.ActionLink(" Home", "Index", "Home", new { }, new { @class = "btn fa fa-home" })</li>
+
+                    <li class="dropdown">
+
+                        <button class="btn btn-default dropdown-toggle" data-toggle="dropdown" data-hover="dropdown"> Service <span class="caret"></span></button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <a class="dropdown-item" href="@Url.Action("Index", "Faculties")">Faculty List</a>
+                            <a class="dropdown-item" href="@Url.Action("Index", "Departments")">Departments List</a>
+                            <a class="dropdown-item" href="@Url.Action("Index", "Books")">Book List</a>
+                            <a class="dropdown-item" href="@Url.Action("Index", "Authors")">Author List</a>
+                            <a class="dropdown-item" href="@Url.Action("Index", "Publishers")">Publisher LIst</a>
+                            <a class="dropdown-item" href="@Url.Action("Vision", "Home")">Vision</a>
+                            <a class="dropdown-item" href="@Url.Action("About", "Home")">About</a>
+                            <a class="dropdown-item" href="@Url.Action("Contact", "Home")">Contact</a>
+
+                        </div>
+                    </li>
+
+
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <li class="dropdown">
+
+                            <button class="btn btn-default dropdown-toggle" data-toggle="dropdown" data-hover="dropdown"> LibraryManagement <span class="caret"></span></button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                <a class="dropdown-item" href="@Url.Action("Index", "Faculties")">Faculty</a>
+                                <a class="dropdown-item" href="@Url.Action("Index", "Departments")">Departments</a>
+                                <a class="dropdown-item" href="@Url.Action("Index", "Books")">Book</a>
+                                <a class="dropdown-item" href="@Url.Action("Index", "Authors")">Author</a>
+                                <a class="dropdown-item" href="@Url.Action("Index", "Publishers")">Publisher</a>
+                                <a class="dropdown-item" href="@Url.Action("MultipleDataInsert", "Faculties")">List Data Insert</a>
+                                <a class="dropdown-item" href="@Url.Action("Index", "Details")">Details Information</a>
+
+                            </div>
+                        </li>
+
+                        if (User.IsInRole("Admin"))
+                        {
+                            <li class="dropdown">
+                                <button class="btn btn-default dropdown-toggle" data-toggle="dropdown" data-hover="dropdown"> Admin <span class="caret"></span></button>
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                    <a class="dropdown-item" href="@Url.Action("Index", "Role")">Role Create</a>
+                                    <a class="dropdown-item" href="@Url.Action("Index", "Users")">User List</a>
+                                    <a class="dropdown-item" href="@Url.Action("Index", "Profile")">My Profile</a>
+                                    <a class="dropdown-item" href="@Url.Action("Register", "Account")">Sing Up</a>
+
+                                </div>
+                            </li>
+
+                        }
+                        else
+                        {
+                            
+
+                            <a href="@Url.Action("Index", "Profile")">My Profile</a>
+                
+                        }
+
+                    }
+
+                </ul>
+               
+                @Html.Partial("_LoginPartial")
+            </div>
+        </div>
+    </div>
+
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - My MVC Project ( Sharmin Akter - 1252366 - Round-41 )</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+
+</body>
+
+</html>
+    
+
+
+  
+   
+
+

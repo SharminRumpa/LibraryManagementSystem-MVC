@@ -1,0 +1,30 @@
+﻿@model MVC_Project_8th_Module.Models.Publisher
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<br />
+<br />
+
+<h2 class="text-center">Detaile Information</h2>
+
+<div>
+    <h4>Publisher</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.PublisherName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PublisherName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.PublisherID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

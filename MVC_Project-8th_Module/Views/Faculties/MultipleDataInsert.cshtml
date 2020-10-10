@@ -1,0 +1,170 @@
+﻿
+@{
+    ViewBag.Title = "MultipleDataInsert";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<br /> <br />
+<h3 class="text-center">Insert List or Array By JSON</h3>
+<br />
+<h5 class="text-center">Multiple Data Insert To Faculty Table</h5>
+
+<script src="~/Scripts/jquery-3.3.1.min.js"></script>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Insert List or Array By JSON</title>
+</head>
+<body>
+    <div class="container">
+        <h6>Faculty Name :</h6>  <input type="text" id="FacultyName" />  <br /> <br />
+
+        <h6>Description :</h6> <input type="text" id="Description" /> <br /> <br />
+
+        <input type="button" class="btn btn-primary" id="btnUpdateUserDetail" value="Add" onclick="AddValueToList();" />
+
+        <input type="button" class="btn btn-success" id="btnUpdateUserDetailEdit" value="Save" onclick="EditValueToList();" />
+
+        <br /> <br />
+        <div class="col-lg-12">
+            <table id="infoTable" class="table">
+                <thead class="table-dark">
+                    <tr>
+                        <th>Faculty Id </th>
+                        <th>Faculty Name </th>
+                        <th>Description </th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+
+        <br /> <br /> <br />
+        <input type="button" class="btn btn-primary" id="btnUpdateFacultyDetail" value="Insert Data" onclick="UpdateFacultyDetail();" />
+
+
+    </div>
+</body>
+</html>
+
+<script src="~/Scripts/jquery-3.3.1.js"></script>
+
+<script lang="en" type="text/javascript">
+
+    var FacultyId = 0;
+    var facultyList = [];
+    function AddValueToList() {
+
+       var n =  document.getElementById("FacultyName").value;
+       var d =  document.getElementById("Description").value;
+
+        if (n == "" || d == "") {
+            alert("Input data can not empty");
+            return false;
+        }     
+
+        FacultyId = 0;
+        var faculyDetails = {};
+        faculyDetails["FacultyID"] = facultyList.length + 1;
+        faculyDetails["FacultyName"] = document.getElementById("FacultyName").value;
+        faculyDetails["Description"] = document.getElementById("Description").value;;
+        facultyList.push(faculyDetails);
+        fillTable();
+
+
+    }
+
+    function fillTable() {
+        $('#infoTable > tbody').empty();
+
+        facultyList.forEach(function (val) {
+            $('#infoTable > tbody:last-child').append('<tr><td>' + val.FacultyID + '</td><td>' + val.FacultyName + '</td><td>' + val.Description + '</td><td><input type="button" class="btn btn-warning" value="Edit" onclick="editPre(' + val.FacultyID + ')"> | <input type="button" class="btn btn-danger"  value="Delete" onclick="tempDelete(' + val.FacultyID + ')" /></td></tr>');
+        })
+
+    }
+
+
+    function EditValueToList() {
+
+        for (var i = facultyList.length; i--;) {
+            if (facultyList[i].FacultyID === FacultyId) {
+                facultyList[i].FacultyName = document.getElementById("FacultyName").value;
+                facultyList[i].Description = document.getElementById("Description").value;
+                break;
+            }
+        }
+
+        fillTable();
+
+    }
+
+    function editPre(FacultyID) {
+        for (var i = facultyList.length; i--;) {
+            if (facultyList[i].FacultyID === FacultyID) {
+                FacultyId = FacultyID;
+                document.getElementById("FacultyName").value = facultyList[i].FacultyName;
+                document.getElementById("Description").value = facultyList[i].Description;
+                break;
+            }
+        }
+
+
+    }
+
+
+    function tempDelete(FacultyID) {
+        remove(facultyList, FacultyID);
+        fillTable();
+    }
+
+    function remove(arr, item) {
+        for (var i = arr.length; i--;) {
+            if (arr[i].FacultyID === item) {
+                arr.splice(i, 1);
+            }
+        }
+        for (var i = 0; i < arr.length; i++) {
+            arr[i].FacultyID = i + 1;
+        }
+
+    }
+
+
+    function UpdateFacultyDetail() {
+        var facultyJson = JSON.stringify(facultyList);
+
+        var getReportColumnsParams = { "facultyJson": facultyJson };
+
+        $.ajax({
+            type: "POST",
+            traditional: true,
+            async: false,
+            cache: false,
+            url: '/Faculties/MultipleDataInsert',
+            context: document.body,
+            data: getReportColumnsParams,
+            success: function (result) {
+                alert(result);
+            },
+            error: function (xhr) {
+                console.log(xhr.responseText);
+                alert("Error has occurred..");
+            }
+        });
+
+
+        facultyList = [];
+        document.getElementById("FacultyName").value = '';
+        document.getElementById("Description").value = '';
+        fillTable();
+    }
+
+
+
+
+</script>
+

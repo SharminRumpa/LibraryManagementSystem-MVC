@@ -1,0 +1,73 @@
+﻿@model IEnumerable<MVC_Project_8th_Module.Models.Publisher>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<br />
+<br />
+
+<h2 class="text-center">Publication List</h2>
+
+
+<table class="table table-hover table-dark">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.PublisherName)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.PublisherName)
+            </td>
+            <td>
+
+                @if (User.Identity.IsAuthenticated)
+                {
+                    if (User.IsInRole("Admin"))
+                    {
+                        <a href="@Url.Action("Create", "Publishers")" class="btn btn-secondary btn-sm mr-1"><i class="fa fa-plus"></i></a>
+                        <a href="@Url.Action("Edit", "Publishers", new { id = item.PublisherID })" class="btn btn-secondary btn-sm mr-1"><i class="fa fa-edit"></i></a>
+                        <a href="@Url.Action("Details", "Publishers", new { id = item.PublisherID })" class="btn btn-secondary btn-sm mr-1"><i class=" fa fa-bars"></i></a>
+                        <a href="@Url.Action("Delete", "Publishers", new { id = item.PublisherID })" class="btn btn-secondary btn-sm mr-1"><i class=" fa fa-trash"></i></a>
+
+                    }
+
+                    if (User.IsInRole("Teacher"))
+                    {
+                        <a href="@Url.Action("Create", "Publishers")" class="btn btn-secondary btn-sm mr-1"><i class="fa fa-plus"></i></a>
+                        <a href="@Url.Action("Edit", "Publishers", new { id = item.PublisherID })" class="btn btn-secondary btn-sm mr-1"><i class="fa fa-edit"></i></a>
+                        <a href="@Url.Action("Details", "Publishers", new { id = item.PublisherID })" class="btn btn-secondary btn-sm mr-1"><i class=" fa fa-bars"></i></a>
+
+                    }
+
+                    if (User.IsInRole("Student"))
+                    {
+
+                        <a href="@Url.Action("Details", "Publishers", new { id = item.PublisherID })" class="btn btn-secondary btn-sm mr-1"><i class=" fa fa-bars"></i></a>
+                    }
+                }
+                else
+                {
+                    <a href="@Url.Action("Index", "Books", new { id = item.PublisherID })" class="btn btn-secondary btn-lg mr-1"><i class=" fa fa-bars"></i> Books List</a>
+                }
+
+                @*<a href="@Url.Action("Create", "Publishers")" class="btn btn-secondary btn-sm mr-1"><i class="fa fa-plus"></i></a>
+        <a href="@Url.Action("Edit", "Publishers", new { id = item.PublisherID })" class="btn btn-secondary btn-sm mr-1"><i class="fa fa-edit"></i></a>
+        <a href="@Url.Action("Details", "Publishers", new { id = item.PublisherID })" class="btn btn-secondary btn-sm mr-1"><i class=" fa fa-bars"></i></a>
+        <a href="@Url.Action("Delete", "Publishers", new { id = item.PublisherID })" class="btn btn-secondary btn-sm mr-1"><i class=" fa fa-trash"></i></a>*@
+
+
+                @*@Html.ActionLink("Edit", "Edit", new { id = item.PublisherID }) |
+        @Html.ActionLink("Details", "Details", new { id = item.PublisherID }) |
+         @Html.ActionLink("Delete", "Delete", new { id = item.PublisherID })*@
+            </td>
+        </tr>
+    }
+
+</table>

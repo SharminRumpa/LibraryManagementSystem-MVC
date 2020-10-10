@@ -1,0 +1,119 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<link href="~/StyleSheet.css" rel="stylesheet" />
+
+<div id="demo" class="carousel slide" data-ride="carousel">
+
+    <!-- Indicators -->
+    <ul class="carousel-indicators">
+        <li data-target="#demo" data-slide-to="0" class="active"></li>
+        <li data-target="#demo" data-slide-to="1"></li>
+        <li data-target="#demo" data-slide-to="2"></li>
+        <li data-target="#demo" data-slide-to="3"></li>
+        <li data-target="#demo" data-slide-to="4"></li>
+        <li data-target="#demo" data-slide-to="5"></li>
+    </ul>
+
+    <!-- The slideshow -->
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <img src="~/Images/Home/Homemage.jpg" alt="Los Angeles" width="1100" height="400">
+        </div>
+        <div class="carousel-item">
+            <img src="~/Images/Home/thumb_26.jpg" alt="New York" width="1100" height="400">
+        </div>
+        <div class="carousel-item">
+            <img src="~/Images/Home/images.jpg" alt="Chicago" width="1100" height="400">
+        </div>
+        <div class="carousel-item">
+            <img src="~/Images/Home/library-mv.jpg" alt="New York" width="1100" height="400">
+        </div>
+        <div class="carousel-item">
+            <img src="~/Images/Home/public_library.jpg" alt="New York" width="1100" height="400">
+        </div>
+        <div class="carousel-item">
+            <img src="~/Images/Home/Graduation.jpg" alt="New York" width="1100" height="400">
+        </div>
+    </div>
+
+    <!-- Left and right controls -->
+    <a class="carousel-control-prev" href="#demo" data-slide="prev">
+        <span class="carousel-control-prev-icon"></span>
+    </a>
+    <a class="carousel-control-next" href="#demo" data-slide="next">
+        <span class="carousel-control-next-icon"></span>
+    </a>
+</div>
+
+<br />
+
+<div class="row">
+    <div class="col-md-4">
+        <div class="text-primary"><h2>Requirments</h2></div>
+        <ul>
+            <li>MVC DataBase-First </li>
+            <li>Relational Databse with image </li>
+            <li>Use of DataAnnotaions in Model</li>
+            <li>Use of ViewModels</li>
+            <li>Use Paging + Sorting + Searching</li>
+            <li>Use AJAX</li>
+            <li>Use of Partial View</li>
+            <li>Identity Authentcation with role</li>
+            <li>Bootstrap Responsive</li>
+            <li>Bootstrap Design</li>
+            <li>Relational Data Operation</li>
+            <li>Insert Enumerable / List / Array Data in Table Using JQuery</li>
+        </ul>
+    </div>
+    <div class="col-md-4">
+        <div class="text-primary"><h2>Highlights</h2></div>
+        <ul>
+            <li>EF Version 6.2.0</li>
+            <li>Bootstrap 4 + Font-awesome 4.7.0</li>
+            <li>PagedList for paging</li>
+            <li>Bootstrap DatePicker V3</li>
+            <li>Only Admin can Create & Delete Roles </li>
+            <li>Only Admin can see all User List</li>
+            <li>Only Admin can Create Id for Teacher</li>
+            <li>Admin can Insert, Update & Delete Data</li>
+            <li>Teacher can Insert & Update</li>
+            <li>Other User can read only</li>
+            <li>Every User can see own Profile </li>
+        </ul>
+
+    </div>
+    <div class="col-md-4">
+        <div class="text-primary"><h2>Help</h2></div>
+        <ul>
+            <li>
+                <h4>LibraryManagement</h4>
+                <ul>
+                    <li>CRUD Operation On all Table</li>
+                    <li>Show Details By Faculty</li>
+                    <li>Insert Multiple raw in same time on Faculty Table</li>
+                    <li>Fully-AJAX supported</li>
+                    <li>Paging, Sorting and searching support</li>
+                    <li>Paging maintains sort and search states</li>
+                </ul>
+            </li>
+
+        </ul>
+    </div>
+</div>
+
+
+<div class="jumbotron">
+    <div class="row">
+        <div id="divH1" class="col-md-3 bg-dark text-white text-center nav-link">
+            <h2>@Html.ActionLink("About", "About", "Home")</h2>
+        </div>
+        <div id="divH2" class="col-md-3 bg-dark text-white text-center nav-link">
+            <h2>@Html.ActionLink("Vision", "Vision", "Home")</h2>
+        </div>
+        <div id="divH3" class="col-md-3 bg-dark text-white text-center nav-link">
+            <h2>@Html.ActionLink("Contact", "Contact", "Home")</h2>
+        </div>
+    </div>
+</div>

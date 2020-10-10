@@ -1,0 +1,35 @@
+﻿@{
+    ViewBag.Title = "About";
+}
+
+<br />
+<br />
+
+<div class="jumbotron">
+    <p class="bg-primary"><h2>@ViewBag.Title</h2></p>
+
+    <h3>@ViewBag.Message</h3>
+
+    <p class="small text-justify">
+        A Library Management System is a software built to handle the primary housekeeping functions of a library.
+        Libraries rely on library management systems to manage asset collections as well as relationships with their members.
+        Library management systems help libraries keep track of the books and their checkouts, as well as members’ subscriptions and profiles.
+        Library management systems also involve maintaining the database for entering new books and recording books
+        that have been borrowed with their respective due dates.
+    </p>
+</div>
+
+<div class="jumbotron">
+
+    <div class="row">
+        <div id="divH1" class="col-md-3 bg-dark text-white text-center nav-link">
+            <h2>@Html.ActionLink("Home", "Index", "Home")</h2>
+        </div>
+        <div id="divH2" class="col-md-3 bg-dark text-white text-center nav-link">
+            <h2>@Html.ActionLink("Vision", "Vision", "Home")</h2>
+        </div>
+        <div id="divH3" class="col-md-3 bg-dark text-white text-center nav-link">
+            <h2>@Html.ActionLink("Contact", "Contact", "Home")</h2>
+        </div>
+    </div>
+</div>

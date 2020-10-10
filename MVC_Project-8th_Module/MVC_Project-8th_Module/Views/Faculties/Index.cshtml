@@ -1,0 +1,77 @@
+﻿@model IEnumerable<MVC_Project_8th_Module.Models.Faculty>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<br /> <br />
+
+<h2 class="text-center">Faculty List</h2>
+
+<table class="table table-hover table-dark">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.FacultyName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FacultyName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+
+                @if (User.Identity.IsAuthenticated)
+                {
+                    if (User.IsInRole("Admin"))
+                    {
+                        <a href="@Url.Action("Create", "Faculties")" class="btn btn-secondary btn-sm mr-1"><i class="fa fa-plus"></i></a>
+                        <a href="@Url.Action("Edit", "Faculties", new { id = item.FacultyID })" class="btn btn-secondary btn-sm mr-1"><i class="fa fa-edit"></i></a>
+                        <a href="@Url.Action("Details", "Faculties", new { id = item.FacultyID })" class="btn btn-secondary btn-sm mr-1"><i class=" fa fa-bars"></i></a>
+                        <a href="@Url.Action("Delete", "Faculties", new { id = item.FacultyID })" class="btn btn-secondary btn-sm mr-1"><i class=" fa fa-trash"></i></a>
+
+                    }
+
+                    if (User.IsInRole("Teacher"))
+                    {
+                        <a href="@Url.Action("Create", "Faculties")" class="btn btn-secondary btn-sm mr-1"><i class="fa fa-plus"></i></a>
+                        <a href="@Url.Action("Edit", "Faculties", new { id = item.FacultyID })" class="btn btn-secondary btn-sm mr-1"><i class="fa fa-edit"></i></a>
+                        <a href="@Url.Action("Details", "Faculties", new { id = item.FacultyID })" class="btn btn-secondary btn-sm mr-1"><i class=" fa fa-bars"></i></a>
+                        <a href="@Url.Action("Delete", "Faculties", new { id = item.FacultyID })" class="btn btn-secondary btn-sm mr-1"><i class=" fa fa-trash"></i></a>
+
+
+                    }
+
+                    if (User.IsInRole("Student"))
+                    {
+
+                        <a href="@Url.Action("Details", "Faculties", new { id = item.FacultyID })" class="btn btn-secondary btn-sm mr-1"><i class=" fa fa-bars"></i></a>
+
+
+                    }
+
+                }
+
+                else
+                {
+                    <a href="@Url.Action("Index", "Departments", new { id = item.FacultyID })" class="btn btn-secondary btn-lg mr-1">Depertment</a>
+                }
+
+            </td>
+        </tr>
+    }
+
+</table>
+

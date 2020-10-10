@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="54a7ded8f2b945c198584a9a94dedaba" Name="Diagram1">
+        <EntityTypeShape EntityType="LibraryManagementBDModel.Author" Width="1.5" PointX="7.375" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LibraryManagementBDModel.Book" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="LibraryManagementBDModel.Department" Width="1.5" PointX="3" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="LibraryManagementBDModel.Faculty" Width="1.5" PointX="0.75" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="LibraryManagementBDModel.Publisher" Width="1.5" PointX="5.125" PointY="4.5" IsExpanded="true" />
+        <AssociationConnector Association="LibraryManagementBDModel.FK__Books__AuthorID__403A8C7D" ManuallyRouted="false" />
+        <AssociationConnector Association="LibraryManagementBDModel.FK__Books__Departmen__412EB0B6" ManuallyRouted="false" />
+        <AssociationConnector Association="LibraryManagementBDModel.FK__Books__Publisher__4222D4EF" ManuallyRouted="false" />
+        <AssociationConnector Association="LibraryManagementBDModel.FK__Departmen__Facul__398D8EEE" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

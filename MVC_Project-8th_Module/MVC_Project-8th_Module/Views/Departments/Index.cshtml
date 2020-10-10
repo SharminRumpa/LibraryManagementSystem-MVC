@@ -1,0 +1,106 @@
+﻿@model PagedList.IPagedList<MVC_Project_8th_Module.Models.Department>
+@using PagedList.Mvc;
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<br />
+<br />
+
+<h2 class="text-center">Department List</h2><br />
+
+@using (Html.BeginForm("Index", "Departments", FormMethod.Get))
+{
+    <div class="input-group">
+        <div class="col-md-4">
+            @Html.TextBox("SearchString", ViewBag.CurrentFilter as string, new { @class = "form-control", @style = "max-width:100%", @placeholder = "Search Departments here..." })
+        </div>
+        <div class="col-md-2">
+            <button type="submit" class="btn btn-primary"><i class="glyphicon glyphicon-search"></i> Search</button>
+        </div>
+    </div>
+}
+
+<br />
+
+<table class="table table-hover table-dark">
+    <tr>
+        <th>
+            @Html.ActionLink("Department Name", "Index", new { sortOrder = ViewBag.NameSortParm }, new { rows = "6", cols = "10" })
+        </th>
+        <th>
+            @Html.ActionLink("Faculty Name", "Index", new { sortOrder = ViewBag.NameSortParm })
+
+        </th>
+
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.DepartmentName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Faculty.FacultyName)
+            </td>
+            <td>
+
+
+                @if (User.Identity.IsAuthenticated)
+                {
+                    if (User.IsInRole("Admin"))
+                    {
+                        <a href="@Url.Action("Create", "Departments")" class="btn btn-secondary btn-sm mr-1"><i class="fa fa-plus"></i></a>
+                        <a href="@Url.Action("Edit", "Departments", new { id = item.DepartmentID })" class="btn btn-secondary btn-sm mr-1"><i class="fa fa-edit"></i></a>
+                        <a href="@Url.Action("Details", "Departments", new { id = item.DepartmentID })" class="btn btn-secondary btn-sm mr-1"><i class=" fa fa-bars"></i></a>
+                        <a href="@Url.Action("Delete", "Departments", new { id = item.DepartmentID })" class="btn btn-secondary btn-sm mr-1"><i class=" fa fa-trash"></i></a>
+
+                    }
+
+                    if (User.IsInRole("Teacher"))
+                    {
+                        <a href="@Url.Action("Create", "Departments")" class="btn btn-secondary btn-sm mr-1"><i class="fa fa-plus"></i></a>
+                        <a href="@Url.Action("Edit", "Departments", new { id = item.DepartmentID })" class="btn btn-secondary btn-sm mr-1"><i class="fa fa-edit"></i></a>
+                        <a href="@Url.Action("Details", "Departments", new { id = item.DepartmentID })" class="btn btn-secondary btn-sm mr-1"><i class=" fa fa-bars"></i></a>
+
+
+
+                    }
+
+                    if (User.IsInRole("Student"))
+                    {
+
+                        <a href="@Url.Action("Details", "Departments", new { id = item.DepartmentID })" class="btn btn-secondary btn-sm mr-1"><i class=" fa fa-bars"></i></a>
+
+
+                    }
+
+                }
+                else
+                {
+                    <a href="@Url.Action("Index", "Books", new { id = item.DepartmentID })" class="btn btn-secondary btn-lg mr-1"><i class=" fa fa-bars"></i> Books List</a>
+                }
+
+
+                @*<a href="@Url.Action("Create", "Departments")" class="btn btn-secondary btn-sm mr-1"><i class="fa fa-plus"></i></a>
+        <a href="@Url.Action("Edit", "Departments", new { id = item.DepartmentID })" class="btn btn-secondary btn-sm mr-1"><i class="fa fa-edit"></i></a>
+        <a href="@Url.Action("Details", "Departments", new { id = item.DepartmentID })" class="btn btn-secondary btn-sm mr-1"><i class=" fa fa-bars"></i></a>
+        <a href="@Url.Action("Delete", "Departments", new { id = item.DepartmentID })" class="btn btn-secondary btn-sm mr-1"><i class=" fa fa-trash"></i></a>*@
+
+
+                @*@Html.ActionLink("Edit", "Edit", new { id = item.DepartmentID }) |
+        @Html.ActionLink("Details", "Details", new { id = item.DepartmentID }) |
+        @Html.ActionLink("Delete", "Delete", new { id = item.DepartmentID })*@
+            </td>
+        </tr>
+    }
+
+</table>
+
+ Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+@Html.PagedListPager(Model, page => Url.Action("Index", new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
+

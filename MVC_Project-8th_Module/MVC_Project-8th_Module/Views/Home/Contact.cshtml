@@ -1,0 +1,38 @@
+﻿@{
+    ViewBag.Title = "Contact";
+}
+
+<br />
+<br />
+<div class="jumbotron">
+    <h2>@ViewBag.Title</h2>
+    <address>
+        SR Library <br />
+        Narayanganj, WA 98052-6399<br />
+        <abbr title="Email">Email:</abbr>
+        Sr@gmail.com<br />
+        <abbr title="Phone">Phone:</abbr>
+        01688-656189
+    </address>
+
+    <address>
+        <strong>Support:</strong>   <a href="mailto:Support@example.com">Support@example.com</a><br />
+        <strong>Marketing:</strong> <a href="mailto:Marketing@example.com">Marketing@example.com</a>
+    </address>
+</div>
+
+
+<div class="jumbotron">
+
+    <div class="row">
+        <div id="divH1" class="col-md-3 bg-dark text-white text-center nav-link">
+            <h2>@Html.ActionLink("Home", "Index", "Home")</h2>
+        </div>
+        <div id="divH2" class="col-md-3 bg-dark text-white text-center nav-link">
+            <h2>@Html.ActionLink("Vision", "Vision", "Home")</h2>
+        </div>
+        <div id="divH3" class="col-md-3 bg-dark text-white text-center nav-link">
+            <h2>@Html.ActionLink("Contact", "Contact", "Home")</h2>
+        </div>
+    </div>
+</div>

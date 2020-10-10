@@ -1,0 +1,75 @@
+﻿@model MVC_Project_8th_Module.Models.SelectedDetailsModel
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<br />
+<br />
+
+
+
+@if (Model != null)
+{
+    <div class="container">
+
+
+        @if (Model.Books != null)
+        {
+            @Html.Partial("BookPartialView")
+        }
+
+        <br />
+        @if (Model.Departments != null)
+        {
+            @Html.Partial("DepartmentPartialView")
+        }
+
+        <br />
+        <h2 class="text-center">Faculty List</h2>
+        <br />
+        <table class="table table-hover table-dark">
+            <thead>
+                <tr>
+                    <th>
+                        Faculty Name
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            @if (Model.Faculties != null)
+            {
+                foreach (var item in Model.Faculties)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.FacultyName)
+                        </td>
+                        <td>
+                            <a href="@Url.Action("Index", "Details", new { FacultyID = item.FacultyID })" class="btn btn-secondary btn-sm mr-1">Select</a>
+                            <a href="@Url.Action("Edit", "Faculties", new { id = item.FacultyID })" class="btn btn-secondary btn-sm mr-1"><i class="fa fa-edit"></i></a>
+                            <a href="@Url.Action("Details", "Faculties", new { id = item.FacultyID })" class="btn btn-secondary btn-sm mr-1"><i class=" fa fa-bars"></i></a>
+                            <a href="@Url.Action("Delete", "Faculties", new { id = item.FacultyID })" class="btn btn-secondary btn-sm mr-1"><i class=" fa fa-trash"></i></a>
+                        </td>
+                    </tr>
+                }
+
+            }
+
+
+        </table>
+
+
+
+    </div>
+}
+
+
+
+
+
+
+
+
+
+

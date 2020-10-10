@@ -1,0 +1,69 @@
+﻿@model MVC_Project_8th_Module.Models.SelectedDetailsModel
+
+<br />
+<h2 class="text-center">Department Wise Book List</h2>
+<table class="table table-hover table-dark">
+    <thead>
+        <tr>
+            <th>
+                Department Name
+            </th>
+            <th>
+                Book Title
+            </th>
+            <th>
+                Author Name
+            </th>
+            <th>
+                ISBN
+            </th>
+            <th>
+                NoOfPage
+            </th>
+            <th>
+                ImageUrl
+            </th>
+
+            <th>
+                Publisher Name
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+
+    @foreach (var item in Model.Books)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Department.DepartmentName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BookTitle)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Author.AuthorName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ISBN)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NoOfPage)
+            </td>
+            <td>
+                <img src="@Url.Content(item.ImageUrl)" width="120" height="120" class="rounded" />
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Publisher.PublisherName)
+            </td>
+            <td>
+                @*<a href="@Url.Action("Index", "Details", new { BookID = item.BookID })" class="btn btn-secondary btn-sm mr-1">Select</a>*@ 
+                <a href="@Url.Action("Edit", "Books", new { id = item.BookID })" class="btn btn-secondary btn-sm mr-1"><i class="fa fa-edit"></i></a> 
+                <a href="@Url.Action("Details", "Books", new { id = item.BookID })" class="btn btn-secondary btn-sm mr-1"><i class=" fa fa-bars"></i></a> 
+                <a href="@Url.Action("Delete", "Books", new { id = item.BookID })" class="btn btn-secondary btn-sm mr-1"><i class=" fa fa-trash"></i></a>
+            </td>
+        </tr>
+    }
+
+
+</table>
+
